@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: upload-files-app
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpw
+    ports:
+      - "5432:5432"

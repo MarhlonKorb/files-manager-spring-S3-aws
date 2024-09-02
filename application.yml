@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/upload-files-app
+    username: pguser
+    password: pgpw
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    create-schemas: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+aws:
+  s3:
+    access-key-id: AKIAXDBDSGLWFP6HIF2B
+    secret-access-key: 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
+    region: us-east-2
+    bucket: files-upload-app
+
+# Outras configurações
+server:
+  port: 8080
