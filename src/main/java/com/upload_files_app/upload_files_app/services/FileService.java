@@ -98,7 +98,6 @@ public class FileService {
                 .bucket(bucket)
                 .key(key)
                 .build();
-
         ResponseBytes<GetObjectResponse> responseBytes = s3Client.getObjectAsBytes(objectRequest);
         return responseBytes.asByteArray();
     }
@@ -120,7 +119,7 @@ public class FileService {
         return objectRequest.responseContentType();
     }
 
-    public void save(File file){
+    public void save(File file) {
         fileRepository.save(file);
     }
 
