@@ -1,26 +1,33 @@
 # Configurar Bucket no S3 da Amazon AWS
 
+O objetivo desse tutorial é apresentar de forma simples como criar um bucket(armazenador de arquivos) no S3 da Amazon AWS e implementar API em Java com Spring Boot que se comunica com o bucket criado, seja enviando ou recebendo arquivos.
+
+Para isso é necessário ter uma conta cadastrada na Amazon AWS.
+
+Aproveitei esse tutorial para criar endpoint que vincula uma imagem a um usuário e salva referência da imagem(url) em uma tabela no banco de dados.
+Utilizei PostgreSQL, Spring, Docker e Migrations.
+
 ## Acessar Menu IAM
 
-![Acessar Menu IAM](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903234655720.png)
+![Acessar Menu IAM](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-1.png)
 
 ## Criar Usuário
 
-![Criar Usuário](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903234706107.png)
+![Criar Usuário](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-2.png)
 
 ## Adicionar Permissão ao Usuário
 
-![Adicionar Permissão](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903235322228.png)
+![Adicionar Permissão](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-8.png)
 
 ## Criar Bucket Público
 
-![Criar Bucket Público](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903234745441.png)
+![Criar Bucket Público](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-6.png)
 
 ## Criar Chave de Acesso (access-key-id) e Secret Access Key
 
-![Criar Chave de Acesso](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903234751423.png)
+![Criar Chave de Acesso](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-5.png)
 
-![Criar Secret Access Key](C:\Users\marhl\AppData\Roaming\Typora\typora-user-images\image-20240903234756850.png)
+![local](https://github.com/MarhlonKorb/files-manager-spring-S3-aws/blob/master/imgs-readme/image-4.png)
 
 ## Configurar Aplicação Java
 
@@ -117,7 +124,7 @@ public class AwsS3Configuration {
 
 ```
 
-### Criar Lógica na Camada de Serviço
+### Criar lógica na Camada de Serviço
 
 ```
 import java.io.IOException;
@@ -241,7 +248,7 @@ public class FileService {
 
 ```
 
-### Implementar Seus Endpoints na Controller
+### Implementar seus endpoints na Controller
 
 ```
 import java.io.IOException;
