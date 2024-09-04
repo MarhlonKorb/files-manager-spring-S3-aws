@@ -19,6 +19,7 @@ import com.upload_files_app.upload_files_app.repositories.FileRepository;
 import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.GetUrlRequest;
@@ -121,6 +122,19 @@ public class FileService {
 
     public void save(File file) {
         fileRepository.save(file);
+    }
+
+    /**
+     * Exclui um arquivo do S3.
+     *
+     * @param key A chave do arquivo no bucket S3.
+     */
+    public void delete(String key) {
+        final var deleteObjectRequest = DeleteObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .build();
+        s3Client.deleteObject(deleteObjectRequest);
     }
 
 }

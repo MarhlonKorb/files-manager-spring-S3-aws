@@ -48,10 +48,10 @@ public class UsuarioService {
         arquivo.setDescricao(file.getName());
         arquivo.setUrl(urlImagem);
 
-        // Definir o usuário associado ao arquivo
+        // Define o usuário associado ao arquivo
         arquivo.setUsuarioId(usuarioEncontrado);
 
-        // Agora adicionar o arquivo ao usuário e salvar o usuário
+        // Adiciona o arquivo ao usuário e salvar o usuário
         usuarioEncontrado.getFiles().add(arquivo);
         usuarioRepository.save(usuarioEncontrado);
     }
