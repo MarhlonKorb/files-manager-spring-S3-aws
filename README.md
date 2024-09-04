@@ -246,6 +246,19 @@ public class FileService {
     }
 }
 
+    /**
+     * Exclui um arquivo do S3.
+     *
+     * @param key A chave do arquivo no bucket S3.
+     */
+    public void delete(String key) {
+        final var deleteObjectRequest = DeleteObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .build();
+        s3Client.deleteObject(deleteObjectRequest);
+    }
+
 ```
 
 ### Implementar seus endpoints na Controller
@@ -306,5 +319,15 @@ public class FileController {
         }
     }
 
-} 
+}
+
+@DeleteMapping("/delete/{key}")
+    public ResponseEntity<String> deleteFile(@PathVariable String key) {
+        try {
+            this.fileService.delete(key);
+            return ResponseEntity.ok().body("Arquivo deletado com sucesso.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar arquivo: " + e.getMessage());
+        }
+    }
 ```
